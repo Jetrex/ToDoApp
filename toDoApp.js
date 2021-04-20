@@ -39,7 +39,6 @@ function addTask(){
         newId = tasks[tasks.length-1].id + 1;
     }
     
-
     let newTask = {
         "id": newId,
         "title": taskText,
@@ -63,7 +62,6 @@ function removeTask(e){
     }
 
     const indexDelItem = targetTask.dataset.id*1;
-
     let index = tasks.findIndex(task => task.id === indexDelItem);
 
     if (index >= 0){
@@ -89,13 +87,8 @@ function completedTask(e){
 
 	// toggle todo object 'completed' property value:
 	tasks[idx].completed = !tasks[idx].completed;
-
-	/* ----------------------- save data to local storage ----------------------- */
-	// note, that localStorage.setItem() expects the second argument to be string
 	localStorage.setItem('tasks',JSON.stringify(tasks));
 
-	/* -------------------------------- change UI ------------------------------- */
-	// render todos:
 	renderTask();
 }
 newToDo.addEventListener('click', completedTask);
