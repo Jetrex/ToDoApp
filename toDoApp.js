@@ -28,6 +28,29 @@ function countTasks(){
     totalItems.innerHTML = counter;
 }
 
+let tasksURL = "https://jsonplaceholder.typicode.com/todos";
+
+function fetchTasks(url){
+    fetch(url)
+        .then(
+            function (response){
+                return response.json();
+            }
+        )
+        .then(
+            function (data){
+                tasks = data;
+                renderTask();
+                return;
+            }
+        )
+};
+
+window.addEventListener("DOMContentLoaded",
+function (e){
+    fetchTasks(tasksURL);
+});
+
 function addTask(){
     let taskText = toDoInput.value;
     let newId;
